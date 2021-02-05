@@ -3,18 +3,18 @@
 import hudson.model.*
 
 
-def call(String name = 'human') {
-  echo "Hello, ${name}."
+// def call(String name = 'human') {
+//   echo "Hello, ${name}."
 
-     node {
-        stage('build'){
+//      node {
+//         stage('build'){
 
-        script {
-          bat 'npm --version'
-        }
-      }
-    }
-}
+//         script {
+//           bat 'npm --version'
+//         }
+//       }
+//     }
+// }
 
 
 def call(Map config=[:], Closure body) {
