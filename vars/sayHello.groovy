@@ -10,7 +10,7 @@ def call(String name = 'human') {
         stage('build'){
 
         script {
-          bat 'npm-install.sh'
+          bat 'npm install'
         }
       }
      }
