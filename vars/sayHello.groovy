@@ -3,8 +3,6 @@
 def call(String name = 'human') {
   echo "Hello, ${name}."
 
-  node ('testNode') {
-
     stages {
 
       stage('build'){
@@ -15,5 +13,4 @@ def call(String name = 'human') {
         
       }
     }
-  }
 }
