@@ -13,7 +13,9 @@ def call(String name = 'human') {
           bat 'npm --version'
         }
       }
-     }
+    }
+}
+
 
 def call(Map config=[:], Closure body) {
     node {
@@ -32,5 +34,4 @@ def call(Map config=[:], Closure body) {
         body()
     }
 }  
-   
-}
+  
