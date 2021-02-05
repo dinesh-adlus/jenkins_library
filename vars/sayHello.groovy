@@ -7,6 +7,5 @@ def call(String name = 'human') {
         script {
           sh 'npm install'
         }
-        =
       }
 }
