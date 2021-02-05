@@ -11,6 +11,7 @@ def call(String name = 'human') {
 
         script {
           bat 'npm --version'
+          bat 'git --version'
         }
       }
      }
