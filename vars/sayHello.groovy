@@ -17,7 +17,7 @@ import hudson.model.*
 // }
 
 
-def call(Map config=[:], Closure body) {
+def call(String name = 'human') {
     node {
         git url: "https://github.com/werne2j/sample-nodejs"
         stage("Install") {
@@ -26,12 +26,6 @@ def call(Map config=[:], Closure body) {
         stage("Test") {
             bat "npm test"
         }
-        stage("Deploy") {
-            if (config.deploy) {
-                bat "npm publish"
-            }
-        }
-        body()
     }
 }  
   
