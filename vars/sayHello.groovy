@@ -17,13 +17,15 @@ import hudson.model.*
 // }
 
 
-def call(String name = 'human') {
+def call(String name = 'sai') {
     node {
-        git url: "https://github.com/dinesh-adlus/angular-test-app"
-        stage("Install") {
+      stage("Checkout") {
+         git url: "https://github.com/dinesh-adlus/angular-test-app"
+      }
+      stage("Install") {
             bat "npm install"
         }
-        stage("Test") {
+        stage("build") {
             bat "npm run build"
         }
     }
