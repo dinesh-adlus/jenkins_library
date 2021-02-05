@@ -19,12 +19,12 @@ import hudson.model.*
 
 def call(String name = 'human') {
     node {
-        git url: "https://github.com/werne2j/sample-nodejs"
+        git url: "https://github.com/dinesh-adlus/angular-test-app"
         stage("Install") {
             bat "npm install"
         }
         stage("Test") {
-            bat "npm test"
+            bat "npm run build"
         }
     }
 }  
