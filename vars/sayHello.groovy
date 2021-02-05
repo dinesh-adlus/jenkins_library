@@ -11,7 +11,6 @@ def call(String name = 'human') {
 
         script {
           bat 'npm --version'
-          bat 'git --version'
         }
       }
      }
@@ -20,14 +19,14 @@ def call(Map config=[:], Closure body) {
     node {
         git url: "https://github.com/werne2j/sample-nodejs"
         stage("Install") {
-            sh "npm install"
+            bat "npm install"
         }
         stage("Test") {
-            sh "npm test"
+            bat "npm test"
         }
         stage("Deploy") {
             if (config.deploy) {
-                sh "npm publish"
+                bat "npm publish"
             }
         }
         body()
