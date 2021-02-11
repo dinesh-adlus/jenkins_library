@@ -26,13 +26,13 @@ def call(String name = 'sai') {
     //         bat "npm install"
     //     }
     var FILE = build.sh
-        if (-f "$FILE" ); then
-          echo "$FILE exists."
-        fi
-        stage("build") {
+       if(FILE){
+          stage("build") {
             echo 'build success'
             // bat "sh build.sh"
         }
+       }
+       
     }
 }  
   
