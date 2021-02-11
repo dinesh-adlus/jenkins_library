@@ -27,7 +27,7 @@ def call(String name = 'sai') {
     // bat "sh build.sh"
     //     }
    
-       File file = new File("./build.sh")
+       File file = new File("build.sh")
            println file.exists()
        
     }
