@@ -22,11 +22,11 @@ def call(String name = 'sai') {
       stage("Checkout") {
          git url: "https://github.com/dinesh-adlus/angular-test-app"
       }
-      stage("Install") {
-            bat "npm install"
-        }
+    //   stage("Install") {
+    //         bat "npm install"
+    //     }
         stage("build") {
-            bat "npm run build"
+            echo `$WORKSPACE`
         }
     }
 }  
