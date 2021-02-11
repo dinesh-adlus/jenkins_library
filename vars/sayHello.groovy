@@ -29,8 +29,9 @@ def call(String name = 'sai') {
    
     //    File file = new File("build.sh")
     //        println file.exists()
-       def data = readFile(file: 'builds.sh');
+     
        try{
+             def data = readFile(file: 'builds.sh');
             println(data)
        }
        catch(Exception ex){
