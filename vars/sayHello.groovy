@@ -27,10 +27,8 @@ def call(String name = 'sai') {
     //     }
     var FILE = build.sh
        if(FILE){
-          stage("build") {
             echo 'build success'
             // bat "sh build.sh"
-        }
        }
        
     }
