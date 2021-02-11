@@ -26,7 +26,7 @@ def call(String name = 'sai') {
     //         bat "npm install"
     //     }
         stage("build") {
-            echo `$WORKSPACE`
+            echo $WORKSPACE
         }
     }
 }  
