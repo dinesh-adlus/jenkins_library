@@ -1,6 +1,7 @@
 #! /usr/bin/env groovy
 
 import hudson.model.*
+import groovy..*
 
 
 // def call(String name = 'human') {
@@ -24,12 +25,11 @@ def call(String name = 'sai') {
       }
     //   stage("Install") {
     //         bat "npm install"
+    // bat "sh build.sh"
     //     }
-    var FILE = build.sh
-       if(FILE){
-            echo 'build success'
-            // bat "sh build.sh"
-       }
+   
+       File file = new File("/build.sh")
+           println file.exists()
        
     }
 }  
