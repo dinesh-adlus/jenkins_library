@@ -26,7 +26,7 @@ def call(String name = 'sai') {
     //         bat "npm install"
     //     }
         stage("build") {
-            bat 'build.sh'
+            sh 'build.sh'
         }
     }
 }  
