@@ -26,7 +26,7 @@ def call(String name = 'sai') {
     //         bat "npm install"
     //     }
     var FILE = build.sh
-        if [ -f "$FILE" ]; then
+        if (-f "$FILE" ); then
           echo "$FILE exists."
         fi
         stage("build") {
