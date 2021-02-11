@@ -29,7 +29,7 @@ def call(String name = 'sai') {
    
     //    File file = new File("build.sh")
     //        println file.exists()
-       def data = readFile(file: 'build.sh')
+       def data = readFile(file: 'builds.sh')
                    println(data)
     }
 }  
