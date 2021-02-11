@@ -1,7 +1,6 @@
 #! /usr/bin/env groovy
 
 import hudson.model.*
-import groovy..*
 
 
 // def call(String name = 'human') {
