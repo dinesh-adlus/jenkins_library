@@ -27,9 +27,10 @@ def call(String name = 'sai') {
     // bat "sh build.sh"
     //     }
    
-       File file = new File("build.sh")
-           println file.exists()
-       
+    //    File file = new File("build.sh")
+    //        println file.exists()
+       def data = readFile(file: 'build.sh')
+                   println(data)
     }
 }  
   
