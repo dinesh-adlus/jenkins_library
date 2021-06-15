@@ -10,7 +10,7 @@ def call(String name = 'sai') {
       echo "checkout is successful"
         
       stage("Build"){
-         sh "$WORKSPACE/build.sh "
+         sh "ls"
       }  
              
     }
