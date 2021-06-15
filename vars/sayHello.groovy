@@ -11,7 +11,7 @@ def call(String name = 'sai') {
       set WORKSPACE=%WORKSPACE:/=\%
 
       stage("Build"){
-         sh " ${WORKSPACE}/build.sh"
+         bat "build.sh"
       }  
              
     }
