@@ -9,7 +9,7 @@ def call(String name = 'sai') {
       }
       echo "checkout is successfull"
    
-
+      tools {nodejs "nodejs"}
       stage("Build"){
        sh (script: "sh build.sh", returnStdout: true)
       }  
