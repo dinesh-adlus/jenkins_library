@@ -7,10 +7,10 @@ def call(String name = 'sai') {
       stage("Checkout") {
          git url: "https://github.com/dinesh-adlus/angular-test-app"
       }
-      echo "checkout is successful"
+      echo "checkout is successfull"
         
       stage("Build"){
-         sh "ls"
+         sh "$WORKSPACE/Angular-test-app_master/build.sh"
       }  
              
     }
