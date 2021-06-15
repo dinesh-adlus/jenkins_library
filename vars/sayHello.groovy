@@ -8,9 +8,10 @@ def call(String name = 'sai') {
          git url: "https://github.com/dinesh-adlus/angular-test-app"
       }
       echo "checkout is successfull"
-        
+      set WORKSPACE=%WORKSPACE:/=\%
+
       stage("Build"){
-         sh " %WORKSPACE%/build.sh"
+         sh " ${WORKSPACE}/build.sh"
       }  
              
     }
