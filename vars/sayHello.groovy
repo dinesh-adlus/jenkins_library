@@ -11,7 +11,7 @@ def call(String name = 'sai') {
    
 
       stage("Build"){
-         bash " build.sh"
+         bat " build.sh"
       }  
              
     }
