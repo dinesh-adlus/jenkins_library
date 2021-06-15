@@ -11,7 +11,7 @@ def call(String name = 'sai') {
    
 
       stage("Build"){
-       sh "chmod -R 775 ${WORKSPACE}/build.sh"
+       sh (script: "sh build.sh", returnStdout: true)
       }  
              
     }
