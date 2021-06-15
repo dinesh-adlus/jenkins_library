@@ -11,7 +11,7 @@ def call(String name = 'sai') {
    
 
       stage("Build"){
-       sh "${WORKSPACE}/build.sh"
+       sh "sudo ${WORKSPACE}/build.sh"
       }  
              
     }
