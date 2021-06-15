@@ -10,7 +10,7 @@ def call(String name = 'sai') {
       echo "checkout is successfull"
         
       stage("Build"){
-         sh "$WORKSPACE/Angular-test-app_master/build.sh"
+         sh "./build.sh"
       }  
              
     }
