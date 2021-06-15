@@ -2,42 +2,17 @@
 
 import hudson.model.*
 
-
-// def call(String name = 'human') {
-//   echo "Hello, ${name}."
-
-//      node {
-//         stage('build'){
-
-//         script {
-//           bat 'npm --version'
-//         }
-//       }
-//     }
-// }
-
-
 def call(String name = 'sai') {
     node {
       stage("Checkout") {
          git url: "https://github.com/dinesh-adlus/angular-test-app"
       }
-    //   stage("Install") {
-    //         bat "npm install"
-    // bat "sh build.sh"
-    //     }
-   
-    //    File file = new File("build.sh")
-    //        println file.exists()
-     
-       try{
-             def data = readFile(file: 'build.sh');
-            println(data)
-       }
-       catch(Exception ex){
-            println('The file is not found');
-       }
-                   
+      echo "checkout is successful"
+        
+      stage("Build"){
+         sh "$WORKSPACE/build.sh "
+      }  
+             
     }
 }  
   
