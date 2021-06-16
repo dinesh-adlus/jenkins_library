@@ -8,7 +8,6 @@ import hudson.model.*
       agent any
       tools {nodejs "nodejs"}
 
-         stages{
           stage("Checkout") {
              git url: "https://github.com/dinesh-adlus/angular-test-app"
           }
@@ -17,7 +16,6 @@ import hudson.model.*
           stage("Build"){
            sh (script: "sh build.sh", returnStdout: true)
           }
-         }
   }
  }
 
