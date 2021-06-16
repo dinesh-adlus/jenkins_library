@@ -5,7 +5,7 @@ import hudson.model.*
  def call(String name = 'sai') {
 
  pipeline{
-      agent any
+      agent none
       tools {nodejs "nodejs"}
 
           stage("Checkout") {
