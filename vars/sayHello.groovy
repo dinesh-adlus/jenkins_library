@@ -8,14 +8,8 @@ pipeline {
    options {
        skipDefaultCheckout(true)
     }
-
+   tools { nodejs "nodejs" }
   stages {
-    stage('init'){
-      steps{
-         tools { nodejs "nodejs" }
-      }
-    }
-
     stage('checkout') {
       steps {
             git url: "https://github.com/dinesh-adlus/angular-test-app"
