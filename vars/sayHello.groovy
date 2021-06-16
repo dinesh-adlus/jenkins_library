@@ -5,8 +5,6 @@ import hudson.model.*
  def call(String name = 'sai') {
 
  pipeline{
-      tools {nodejs "nodejs"}
-
           stage("Checkout") {
              git url: "https://github.com/dinesh-adlus/angular-test-app"
           }
