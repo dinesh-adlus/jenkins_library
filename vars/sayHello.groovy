@@ -2,7 +2,7 @@
 
 import hudson.model.*
 
- def call() {
+ def call(String name = 'sai') {
 
  pipeline{
       agent any
