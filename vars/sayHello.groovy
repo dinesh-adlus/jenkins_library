@@ -9,11 +9,15 @@ pipeline {
   tools { nodejs "nodejs" }
 
   stages {
-    stage('Test npm') {
+    stage('checkout') {
       steps {
-        sh """
-          npm --version
-        """
+            git url: "https://github.com/dinesh-adlus/angular-test-app"
+           echo "checkout is successfull"
+      }
+    }
+    stage('build'){
+      steps{
+        sh (script: "sh build.sh", returnStdout: true)
       }
     }
   }
