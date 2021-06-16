@@ -2,19 +2,21 @@
 
 import hudson.model.*
 
- def call(String name = 'sai') {
+def call(String name = 'sai') {
+pipeline {
+  agent { label 'master' }
 
- pipeline{
-        node{
-          stage("Checkout") {
-             git url: "https://github.com/dinesh-adlus/angular-test-app"
-          }
-          echo "checkout is successfull"
+  tools { nodejs "nodejs" }
 
-          stage("Build"){
-           sh (script: "sh build.sh", returnStdout: true)
-          }
-          }
+  stages {
+    stage('Test npm') {
+      steps {
+        sh """
+          npm --version
+        """
+      }
+    }
   }
+}
  }
 
