@@ -141,7 +141,7 @@ pipeline {
         					 gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
 
         					 gcloud config list;
-        					 gcloud app deploy ${app.yaml};
+        					 gcloud app deploy;
                              echo "Deployed to GCP Successfully"
         				"""
         				}
