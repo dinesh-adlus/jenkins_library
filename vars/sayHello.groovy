@@ -47,7 +47,7 @@ pipeline {
     stage('build'){
       steps{
         sh (script: "sh build.sh", returnStdout: true)
-        ls
+        sh ls
       }
         /**
          Once build stage is passed you will head straight to deploying to gcp.
