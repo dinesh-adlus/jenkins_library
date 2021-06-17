@@ -16,9 +16,9 @@ pipeline {
  // you can place env variables across the files to use them in multiple instances,
  //  if you do not wish to do so in any case feel free to use the $WORKSPACE variable as well.
   	 environment {
-          env.GOOGLE_PROJECT_ID = 'angular-317016';
+          GOOGLE_PROJECT_ID = 'angular-317016';
 
-  		  env.GOOGLE_SERVICE_ACCOUNT_KEY = credentials('service_account_key':f1c2976575fbbc8ec5da9f7d31d20877bb6dd4da);
+  		  GOOGLE_SERVICE_ACCOUNT_KEY = credentials('service_account_key');
      }
 
   /**
