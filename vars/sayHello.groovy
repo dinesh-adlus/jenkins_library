@@ -18,7 +18,7 @@ pipeline {
   	 environment {
           GOOGLE_PROJECT_ID = 'angular-317016';
 
-  		  GOOGLE_SERVICE_ACCOUNT_KEY = credentials('service_account_key');
+  		  GOOGLE_SERVICE_ACCOUNT_KEY = credentials('Angular');
      }
 
   /**
