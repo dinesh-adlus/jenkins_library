@@ -54,8 +54,98 @@ pipeline {
                    1: GCP App Engine
                    2: deploy to storage buckets
         */
-          deployToGCP(env)
+
     }
+    		stage('Publish'){
+    			steps{
+    				println('Starting publish..');
+    				script{
+    					def server = Artifactory.server('adtech-service-artifactory');
+    					println("here is the server: "+server);
+    					println("here is the server: ${server}");
+
+    					def buildInfo = Artifactory.newBuildInfo();
+    					buildInfo.env.capture = true;
+
+    					buildInfo.retention maxBuilds: 10;
+    					buildInfo.retention maxDays: 10;
+
+    					println('Before adding upload spec');
+    					def uploadSpec = """{
+    						"files": [
+     									{
+    										"pattern": "*.tar.gz",
+    										"target": "libs-release-local/XXXX/",
+    										"recursive": "true",
+    										"flat": "false",
+    										"props": "Version=2"
+    									},
+    									{
+    										"pattern": "*.zip",
+    										"target": "libs-release-local/XXXX/",
+    										"recursive": "true",
+    										"flat": "false",
+    										"props": "Version=2"
+    									}
+    								]
+    					}
+    					""";
+    					println('Before calling upload service');
+    					server.upload(uploadSpec);
+
+
+    					//download the uploaded artifact -  this is to download any dependant modules from
+    					// the artifcatory if any
+    					println('Before adding download spec');
+    					def downloadSpec = """{
+    						"files": [
+     									{
+    										"pattern": "**/*.war",
+    										"target": "libs-release-local"
+    									}
+    								]
+    					}
+    					""";
+    					server.download(downloadSpec);
+
+
+    				}
+    				println('Publish Success');
+
+
+    			}
+    		}
+
+
+
+
+
+        stage('Deploy'){
+        			steps{
+
+        				//Deploy to GCP
+        				sh """
+        					#!/bin/bash
+        					echo "deploy stage";
+        					curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz;
+        					tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;
+        					/tmp/google-cloud-sdk/install.sh -q;
+
+                            			source /tmp/google-cloud-sdk/path.bash.inc;
+
+
+        					 gcloud config set project ${GOOGLE_PROJECT_ID};
+        					 gcloud components install app-engine-java;
+        					 gcloud components install app-engine-python;
+        					 gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
+
+        					 gcloud config list;
+        					 gcloud app deploy --version=v01;
+                            			 echo "Deployed to GCP"
+        				"""
+        				}
+
+        		}
 
   }
 }
