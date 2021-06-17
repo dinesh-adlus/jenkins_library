@@ -48,15 +48,15 @@ pipeline {
       steps{
         sh (script: "sh build.sh", returnStdout: true)
       }
+        /**
+         Once build stage is passed you will head straight to deploying to gcp.
+         Approach used here is
+                   1: GCP App Engine
+                   2: deploy to storage buckets
+        */
+          deployToGCP(env)
     }
 
-  /**
-   Once build stage is passed you will head straight to deploying to gcp.
-   Approach used here is
-             1: GCP App Engine
-             2: deploy to storage buckets
-  */
-    deployToGCP(env)
   }
 }
  }
