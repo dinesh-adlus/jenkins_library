@@ -121,10 +121,10 @@ pipeline {
 
 
          stage('upload to storagebucket'){
-               sh '''
-                    env > build_environment.txt
-                '''
             steps{
+                           sh '''
+                                env > build_environment.txt
+                            '''
                step([$class: 'ClassicUploadStep', credentialsId: GOOGLE_SERVICE_ACCOUNT_KEY,
                  bucket: "nonstick", pattern: PATTERN])
 
