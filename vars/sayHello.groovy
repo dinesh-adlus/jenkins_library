@@ -18,6 +18,7 @@ pipeline {
   	 environment {
           GOOGLE_PROJECT_ID = 'angular-317016';
   		  GOOGLE_SERVICE_ACCOUNT_KEY = credentials('Angular');
+  		  PATTERN = '${WORKSPACE/index.html}'
      }
 
   /**
@@ -45,9 +46,9 @@ pipeline {
     }
     stage('build'){
       steps{
-        sh (script: "sh build.sh", returnStdout: true)
-        sh "ls"
-        sh "rm -rf ./node_modules"
+//         sh (script: "sh build.sh", returnStdout: true)
+//         sh "ls"
+//         sh "rm -rf ./node_modules"
       }
         /**
          Once build stage is passed you will head straight to deploying to gcp.
@@ -120,10 +121,12 @@ pipeline {
 
 
          stage('upload to storagebucket'){
-
+               sh '''
+                    env > build_environment.txt
+                '''
             steps{
-               step([$class: 'ClassicUploadStep', credentialsId: "${GOOGLE_SERVICE_ACCOUNT_KEY}",
-                 bucket: "nonstick"])
+               step([$class: 'ClassicUploadStep', credentialsId: GOOGLE_SERVICE_ACCOUNT_KEY,
+                 bucket: "nonstick", pattern: PATTERN]])
 
             }
 
