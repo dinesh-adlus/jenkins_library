@@ -120,48 +120,48 @@ pipeline {
 
 
 
-         stage('upload to storagebucket'){
-            steps{
-                           sh '''
-                                env > build_environment.txt
-                            '''
-               step([$class: 'ClassicUploadStep', credentialsId: "${GOOGLE_SERVICE_ACCOUNT_KEY}",
-                 bucket: "nonstick", pattern: PATTERN])
-
-            }
-
-
-
-         }
-
-
-
-//         stage('Deploy'){
-//         			steps{
+//          stage('upload to storagebucket'){
+//             steps{
+//                            sh '''
+//                                 env > build_environment.txt
+//                             '''
+//                step([$class: 'ClassicUploadStep', credentialsId: "${GOOGLE_SERVICE_ACCOUNT_KEY}",
+//                  bucket: "nonstick", pattern: PATTERN])
 //
-//         				//Deploy to GCP
-//         				sh """
-//         					#!/bin/bash
-//         					echo "deploy stage";
-//         					curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz;
-//         					tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;
-//         					/tmp/google-cloud-sdk/install.sh -q;
-//
-//                             			source /tmp/google-cloud-sdk/path.bash.inc;
+//             }
 //
 //
-//         					 gcloud config set project ${GOOGLE_PROJECT_ID};
-//         					 gcloud components install app-engine-java;
-//         					 gcloud components install app-engine-python;
-//         					 gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
 //
-//         					 gcloud config list;
-//         					 gcloud app deploy;
-//                              echo "Deployed to GCP Successfully"
-//         				"""
-//         				}
-//
-//         		}
+//          }
+
+
+
+        stage('Deploy'){
+        			steps{
+
+        				//Deploy to GCP
+        				sh """
+        					#!/bin/bash
+        					echo "deploy stage";
+        					curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz;
+        					tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;
+        					/tmp/google-cloud-sdk/install.sh -q;
+
+                            			source /tmp/google-cloud-sdk/path.bash.inc;
+
+
+        					 gcloud config set project ${GOOGLE_PROJECT_ID};
+        					 gcloud components install app-engine-java;
+        					 gcloud components install app-engine-python;
+        					 gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
+
+        					 gcloud config list;
+        					 gsutil cp index.html gs://nonstick
+                             echo "Deployed to GCP Successfully"
+        				"""
+        				}
+
+        		}
 
   }
 }
