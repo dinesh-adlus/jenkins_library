@@ -156,6 +156,7 @@ pipeline {
         					 gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
 
         					 gcloud config list;
+        					 ls
         					 gsutil cp index.html gs://nonstick
                              echo "Deployed to GCP Successfully"
         				"""
