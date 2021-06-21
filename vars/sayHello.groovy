@@ -47,7 +47,7 @@ pipeline {
     stage('build'){
       steps{
 //         sh (script: "sh build.sh", returnStdout: true)
-//         sh "ls"
+        sh "ls"
 //         sh "rm -rf ./node_modules"
       }
         /**
