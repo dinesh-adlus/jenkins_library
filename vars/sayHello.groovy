@@ -157,7 +157,7 @@ pipeline {
 
         					 gcloud config list;
         					 ls
-        					 gsutil cp index.html gs://nonstick
+        					 gsutil cp angular.json gs://nonstick
                              echo "Deployed to GCP Successfully"
         				"""
         				}
