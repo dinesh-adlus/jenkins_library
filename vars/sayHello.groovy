@@ -125,7 +125,7 @@ pipeline {
                            sh '''
                                 env > build_environment.txt
                             '''
-               step([$class: 'ClassicUploadStep', credentialsId: GOOGLE_SERVICE_ACCOUNT_KEY,
+               step([$class: 'ClassicUploadStep', credentialsId: "${GOOGLE_SERVICE_ACCOUNT_KEY}",
                  bucket: "nonstick", pattern: PATTERN])
 
             }
