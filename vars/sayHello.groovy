@@ -126,7 +126,7 @@ pipeline {
                 '''
             steps{
                step([$class: 'ClassicUploadStep', credentialsId: GOOGLE_SERVICE_ACCOUNT_KEY,
-                 bucket: "nonstick", pattern: PATTERN]])
+                 bucket: "nonstick", pattern: PATTERN])
 
             }
 
