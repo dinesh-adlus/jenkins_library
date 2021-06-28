@@ -158,9 +158,9 @@ pipeline {
         					 gcloud config list;
         					 ls
         					 gsutil cp -r dist/my-first-app gs://my-qa1/Angular1/
-                             mkdir angular-gcp-apt
-                             gsutil rsync -r gs://my-qa1/Angular1/my-first-app ./angular-gcp-apt
-                             cd angular-gcp-apt
+                             mkdir angular-gcp-apti
+                             gsutil rsync -r gs://my-qa1/Angular1/my-first-app ./angular-gcp-apti
+                             cd angular-gcp-apti
         					 gcloud app deploy
                              echo "Deployed to GCP Successfully"
         				"""
