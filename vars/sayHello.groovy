@@ -160,7 +160,7 @@ pipeline {
         					 gsutil cp -r dist/   gs://my-qa1/Angular1/
 
         					 echo "Printing out the present working directory..."
-                             echo "${PWD}"
+                             pwd
         					 gcloud app deploy --bucket= gs://my-qa1/Angular1/
                              echo "Deployed to GCP Successfully"
         				"""
