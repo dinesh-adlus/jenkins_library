@@ -46,9 +46,9 @@ pipeline {
     }
     stage('build'){
       steps{
-//         sh (script: "sh build.sh", returnStdout: true)
+         sh (script: "sh build.sh", returnStdout: true)
         sh "ls"
-//         sh "rm -rf ./node_modules"
+        sh "rm -rf ./node_modules"
       }
         /**
          Once build stage is passed you will head straight to deploying to gcp.
@@ -158,9 +158,9 @@ pipeline {
         					 gcloud config list;
         					 ls
         					 gsutil cp -r dist/my-first-app gs://my-qa1/Angular1/
-                             mkdir angular-gcp-apps
-                             gsutil rsync -r gs://my-qa1/Angular1/ ./angular-gcp-apps
-                             cd angular-gcp-apps
+                             mkdir angular-gcp-appss
+                             gsutil rsync -r gs://my-qa1/Angular1/ ./angular-gcp-appss
+                             cd angular-gcp-appss
         					 gcloud app deploy
                              echo "Deployed to GCP Successfully"
         				"""
