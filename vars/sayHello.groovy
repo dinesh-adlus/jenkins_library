@@ -159,6 +159,7 @@ pipeline {
         					 ls
         					 gsutil cp angular.json gs://my-qa1/Angular1/
         					 gsutil cp angular.json gs://my-qa2/Angular1/
+        					 gcloud app deploy
                              echo "Deployed to GCP Successfully"
         				"""
         				}
