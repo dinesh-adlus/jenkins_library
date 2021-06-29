@@ -46,6 +46,8 @@ pipeline {
     }
     stage('build'){
       steps{
+         cleanWs()
+         echo"Workspace cleaned"
          sh (script: "sh build.sh", returnStdout: true)
         sh "ls"
         sh "rm -rf ./node_modules"
@@ -163,7 +165,7 @@ pipeline {
                              gsutil rsync -r gs://my-qa1/Angular1 ./angular-gcp-aptu
                              cd angular-gcp-aptu
                              ls
-        					 gcloud app deploy --project=angular-317016
+                             gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
         				"""
         				}
