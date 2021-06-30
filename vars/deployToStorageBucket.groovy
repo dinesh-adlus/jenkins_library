@@ -1,5 +1,6 @@
 #! /usr/bin/env groovy
 
+#! @Author: Dinesh Gurram
 import hudson.model.*
 
 def call(Closure body) {
@@ -19,8 +20,8 @@ def call(Closure body) {
         					curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz;
         					tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;
         					/tmp/google-cloud-sdk/install.sh -q;
+                            source /tmp/google-cloud-sdk/path.bash.inc;
 
-                            			source /tmp/google-cloud-sdk/path.bash.inc;
 
 
         					 gcloud config set project ${GOOGLE_PROJECT_ID};
