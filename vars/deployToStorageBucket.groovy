@@ -9,8 +9,8 @@ def call(Closure body) {
     body.delegate = config
     body()
 
-
-        stage('DeploytoStorageBucket'){
+        stages{
+            stage('DeploytoStorageBucket'){
         			steps{
 
         				//Deploy to GCP
@@ -43,6 +43,7 @@ def call(Closure body) {
         				}
 
         		}
+        	}
         		post {
         		         cleanWs()
                          echo"Workspace cleaned"
