@@ -43,7 +43,6 @@ pipeline {
             git url: "https://github.com/dinesh-adlus/angular-test-app"
            echo "checkout is successfull"
            deployToStorageBucket {
-                     name = 'git'
             }
       }
     }
