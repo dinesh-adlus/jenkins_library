@@ -1,6 +1,6 @@
 #! /usr/bin/env groovy
 
-#! @Author: Dinesh Gurram
+// @Author: Dinesh Gurram
 import hudson.model.*
 
 def call(Closure body) {
