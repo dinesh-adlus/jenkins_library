@@ -3,9 +3,6 @@ import hudson.model.*
 
 /**
   @author: Dinesh Gurram
-  @description: if you are using a SPA/node/any containerized application create a Jenkins file and pass the
-     reference to this libray as
-           -->    @Library('place your library name here')_
 */
 
 
