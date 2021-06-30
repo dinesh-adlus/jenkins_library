@@ -9,6 +9,7 @@ def call(Closure body) {
     body.delegate = config
     body()
 
+     pipeline{
         stages{
             stage('DeploytoStorageBucket'){
         			steps{
@@ -49,4 +50,5 @@ def call(Closure body) {
                          echo"Workspace cleaned"
         		}
 
+ }
  }

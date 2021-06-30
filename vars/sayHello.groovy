@@ -11,7 +11,7 @@ import hudson.model.*
 
 def call(String name = 'sai') {
 
-
+pipeline {
 
  // you can place env variables across the files to use them in multiple instances,
  //  if you do not wish to do so in any case feel free to use the $WORKSPACE variable as well.
@@ -37,6 +37,7 @@ def call(String name = 'sai') {
    tools { nodejs "nodejs" }
 
   // stages refers to the mainstops in jenkins workflow declaring all individual stages here.
+  stages {
     stage('checkout') {
       steps {
             git url: "https://github.com/dinesh-adlus/angular-test-app"
@@ -48,21 +49,15 @@ def call(String name = 'sai') {
          sh (script: "sh build.sh", returnStdout: true)
         sh "ls"
         sh "rm -rf ./node_modules"
+         deployToStorageBucket {
 
-                /**
-                 Once build stage is passed you will head straight to deploying to gcp.
-                 Approach used here is
-                           1: GCP App Engine
-                           2: deploy to storage buckets
-                */
-
-       }
-                 deployToStorageBucket {
-
-                  }
+           }
+      }
 
 
     }
 
   }
+}
+ }
 
