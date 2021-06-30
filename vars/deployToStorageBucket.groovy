@@ -8,7 +8,7 @@ def call(Closure body) {
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
     body()
-
+           try{
             stage('DeploytoStorageBucket'){
 
 
@@ -38,14 +38,17 @@ def call(Closure body) {
                              ls
                              gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
+
         				"""
-
+        				cleanWs()
+                       echo"Workspace cleaned"
 
         		}
+        	}
+        	catch(e){
+        	     cleanWs()
+                 echo"Workspace cleaned"
+        	}
 
-        		post {
-        		         cleanWs()
-                         echo"Workspace cleaned"
-        		}
 
  }
