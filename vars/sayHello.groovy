@@ -42,9 +42,9 @@ pipeline {
       steps {
             git url: "https://github.com/dinesh-adlus/angular-test-app"
            echo "checkout is successfull"
-      }
-      deployToStorageBucket {
-          name = 'git'
+           deployToStorageBucket {
+                     name = 'git'
+            }
       }
     }
     stage('build'){
