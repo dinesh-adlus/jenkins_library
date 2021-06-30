@@ -168,7 +168,6 @@ pipeline {
                              gsutil rsync -r gs://my-qa1/Angular1 ./angular-gcp-aptu
                              cd angular-gcp-aptu
                              ls
-                             echo "$1"
                              gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
         				"""
