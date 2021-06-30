@@ -42,137 +42,27 @@ pipeline {
       steps {
             git url: "https://github.com/dinesh-adlus/angular-test-app"
            echo "checkout is successfull"
-           deployToStorageBucket {
-            }
       }
     }
     stage('build'){
       steps{
-         cleanWs()
-         echo"Workspace cleaned"
          sh (script: "sh build.sh", returnStdout: true)
         sh "ls"
         sh "rm -rf ./node_modules"
+
+                /**
+                 Once build stage is passed you will head straight to deploying to gcp.
+                 Approach used here is
+                           1: GCP App Engine
+                           2: deploy to storage buckets
+                */
+          deployToStorageBucket {
+
+           }
       }
-        /**
-         Once build stage is passed you will head straight to deploying to gcp.
-         Approach used here is
-                   1: GCP App Engine
-                   2: deploy to storage buckets
-        */
+
 
     }
-//     		stage('Publish'){
-//     			steps{
-//     				println('Starting publish..');
-//     				script{
-//     					def server = Artifactory.server('adtech-service-artifactory');
-//     					println("here is the server: "+server);
-//     					println("here is the server: ${server}");
-//
-//     					def buildInfo = Artifactory.newBuildInfo();
-//     					buildInfo.env.capture = true;
-//
-//     					buildInfo.retention maxBuilds: 10;
-//     					buildInfo.retention maxDays: 10;
-//
-//     					println('Before adding upload spec');
-//     					def uploadSpec = """{
-//     						"files": [
-//      									{
-//     										"pattern": "*.tar.gz",
-//     										"target": "libs-release-local/XXXX/",
-//     										"recursive": "true",
-//     										"flat": "false",
-//     										"props": "Version=2"
-//     									},
-//     									{
-//     										"pattern": "*.zip",
-//     										"target": "libs-release-local/XXXX/",
-//     										"recursive": "true",
-//     										"flat": "false",
-//     										"props": "Version=2"
-//     									}
-//     								]
-//     					}
-//     					""";
-//     					println('Before calling upload service');
-//     					server.upload(uploadSpec);
-//
-//
-//     					//download the uploaded artifact -  this is to download any dependant modules from
-//     					// the artifcatory if any
-//     					println('Before adding download spec');
-//     					def downloadSpec = """{
-//     						"files": [
-//      									{
-//     										"pattern": "**/*.war",
-//     										"target": "libs-release-local"
-//     									}
-//     								]
-//     					}
-//     					""";
-//     					server.download(downloadSpec);
-//
-//
-//     				}
-//     				println('Publish Success');
-//
-//
-//     			}
-//     		}
-
-
-
-//          stage('upload to storagebucket'){
-//             steps{
-//                            sh '''
-//                                 env > build_environment.txt
-//                             '''
-//                step([$class: 'ClassicUploadStep', credentialsId: "${GOOGLE_SERVICE_ACCOUNT_KEY}",
-//                  bucket: "nonstick", pattern: PATTERN])
-//
-//             }
-//
-//
-//
-//          }
-
-
-
-        stage('Deploy'){
-        			steps{
-
-        				//Deploy to GCP
-        				sh """
-        					#!/bin/bash
-        					echo "deploy stage";
-        					curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz;
-        					tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;
-        					/tmp/google-cloud-sdk/install.sh -q;
-
-                            			source /tmp/google-cloud-sdk/path.bash.inc;
-
-
-        					 gcloud config set project ${GOOGLE_PROJECT_ID};
-        					 gcloud components install app-engine-java;
-        					 gcloud components install app-engine-python;
-        					 gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
-
-        					 gcloud config list;
-        					 ls
-        					 gsutil cp -r dist/my-first-app gs://my-qa1/Angular1/
-        					 gsutil cp app.yaml gs://my-qa1/Angular1/
-                             mkdir angular-gcp-aptu
-                             gsutil rsync -r gs://my-qa1/Angular1 ./angular-gcp-aptu
-                             cd angular-gcp-aptu
-                             ls
-                             gcloud app deploy --project=angular-317016
-                             echo "Deployed to GCP Successfully"
-        				"""
-        				}
-
-        		}
 
   }
 }
