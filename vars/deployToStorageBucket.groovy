@@ -10,12 +10,7 @@ def call(Closure body) {
     body()
 
     stage("Deploy To App Engine") {
-
+      echo "Deployed"
     }
-
-
-
-
-
 
  }

@@ -43,6 +43,9 @@ pipeline {
             git url: "https://github.com/dinesh-adlus/angular-test-app"
            echo "checkout is successfull"
       }
+      deployToStorageBucket {
+          name = 'git'
+      }
     }
     stage('build'){
       steps{
@@ -165,7 +168,7 @@ pipeline {
                              gsutil rsync -r gs://my-qa1/Angular1 ./angular-gcp-aptu
                              cd angular-gcp-aptu
                              ls
-                             echo "printing the firstline $1"
+                             echo "$1"
                              gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
         				"""
