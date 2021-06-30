@@ -9,10 +9,9 @@ def call(Closure body) {
     body.delegate = config
     body()
 
-     pipeline{
-        stages{
+
             stage('DeploytoStorageBucket'){
-        			steps{
+        			//steps{
 
         				//Deploy to GCP
         				sh """
@@ -41,14 +40,14 @@ def call(Closure body) {
                              gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
         				"""
-        				}
+        				//}
 
         		}
-        	}
-        		post {
-        		         cleanWs()
-                         echo"Workspace cleaned"
-        		}
+        	//}
+//         		post {
+//         		         cleanWs()
+//                          echo"Workspace cleaned"
+//         		}
 
- }
+// }
  }

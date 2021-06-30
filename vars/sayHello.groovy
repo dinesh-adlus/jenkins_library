@@ -46,9 +46,9 @@ pipeline {
     }
     stage('build'){
       steps{
-         sh (script: "sh build.sh", returnStdout: true)
+        // sh (script: "sh build.sh", returnStdout: true)
         sh "ls"
-        sh "rm -rf ./node_modules"
+        //sh "rm -rf ./node_modules"
          deployToStorageBucket {
 
            }
