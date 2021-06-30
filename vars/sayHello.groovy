@@ -56,10 +56,11 @@ pipeline {
                            1: GCP App Engine
                            2: deploy to storage buckets
                 */
-          deployToStorageBucket {
 
-           }
-      }
+       }
+                 deployToStorageBucket {
+
+                  }
 
 
     }
