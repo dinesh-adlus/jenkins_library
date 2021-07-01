@@ -24,7 +24,7 @@ pipeline {
           GOOGLE_PROJECT_ID = 'angular-317016';
   		  GOOGLE_SERVICE_ACCOUNT_KEY = credentials('Angular');
   		  PATTERN = '${WORKSPACE/index.html}';
-  		  ENV = ''
+  		  ENV = [:]
      }
 
   /**
