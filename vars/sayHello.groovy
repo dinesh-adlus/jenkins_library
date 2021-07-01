@@ -6,7 +6,11 @@ import hudson.model.*
 */
 
 
-def call(String name = 'sai') {
+def call(Closure body) {
+    def config = [:]
+    body.resolveStrategy = Closure.DELEGATE_FIRST
+    body.delegate = config
+    body()
 
 pipeline {
 
@@ -35,6 +39,16 @@ pipeline {
 
   // stages refers to the mainstops in jenkins workflow declaring all individual stages here.
   stages {
+    stage('configuration') {
+          steps {
+                git url: "https://github.com/dinesh-adlus/config-management"
+               echo "checkout is successfull"
+               echo "current path is ${config.path}"
+               def readConfig = readJSON file: "${WORKSPACE}/${config.path}"
+               def testVal = readConfig.branch
+               echo "confirmed value is ${testVal}"
+          }
+    }
     stage('checkout') {
       steps {
             git url: "https://github.com/dinesh-adlus/angular-test-app"
