@@ -15,6 +15,7 @@ def call(body) {
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
     body()
+    def common = [:]
 
 pipeline {
 
@@ -52,14 +53,14 @@ pipeline {
                git url: "https://github.com/dinesh-adlus/config-management"
                echo "checkout is successful"
                echo "Reading the configuration from configuration file."
-               config.readConfig = readJSON file: "${WORKSPACE}/${config.path}"
-               def branch = readConfig.branch
+               common.readConfig = readJSON file: "${WORKSPACE}/${config.path}"
+               def branch = common.readConfig.branch
               }
           }
     }
     stage('checkout') {
       steps {
-            git branch: '${config.readConfig}', url: "${config.readConfig.gitUrl}"
+            git branch: '${common.readConfig}', url: "${common.readConfig.gitUrl}"
            echo "checkout is successful"
       }
     }
