@@ -31,7 +31,7 @@ def call(Closure body) {
 
         					 gcloud config list;
         					 ls
-        					 gsutil cp -r dist/my-first-app gs://my-qa1/Angular1/
+        					 gsutil cp -r dist/design1 gs://my-qa1/Angular1/
         					 gsutil cp app.yaml gs://my-qa1/Angular1/
                              mkdir angular-gcp-aptu
                              gsutil rsync -r gs://my-qa1/Angular1 ./angular-gcp-aptu
