@@ -1,5 +1,6 @@
 #! /usr/bin/env groovy
 import hudson.model.*
+import com.cloudbees.groovy.cps.NonCPS
 
 /**
   @author: Dinesh Gurram
