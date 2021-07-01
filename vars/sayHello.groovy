@@ -41,12 +41,14 @@ pipeline {
   stages {
     stage('configuration') {
           steps {
+            script {
                 git url: "https://github.com/dinesh-adlus/config-management"
                echo "checkout is successfull"
                echo "current path is ${config.path}"
-               readConfig = readJSON file: "${WORKSPACE}/${config.path}"
-               testVal = readConfig.branch
+               def readConfig = readJSON file: "${WORKSPACE}/${config.path}"
+               def testVal = readConfig.branch
                echo "confirmed value is ${testVal}"
+              }
           }
     }
     stage('checkout') {
