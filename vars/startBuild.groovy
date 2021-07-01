@@ -8,6 +8,9 @@ import com.cloudbees.groovy.cps.NonCPS
 
 
 def call(body) {
+
+  // If you do not have multiple values to pass on to Map, then you can simply exclude the body block
+  //   and consume the value directly(as regular argument).
     def config = [:]
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
@@ -43,19 +46,20 @@ pipeline {
     stage('configuration') {
           steps {
             script {
-                git url: "https://github.com/dinesh-adlus/config-management"
+
+               //default: master
+               git url: "https://github.com/dinesh-adlus/config-management"
                echo "checkout is successfull"
-               echo "current path is ${config.path}"
+               echo "Reading the configuration from configuration file."
                def readConfig = readJSON file: "${WORKSPACE}/${config.path}"
-               def testVal = readConfig.branch
-               echo "confirmed value is ${testVal}"
+               def branch = readConfig.branch
               }
           }
     }
     stage('checkout') {
       steps {
-            git url: "https://github.com/dinesh-adlus/angular-test-app"
-           echo "checkout is successfull"
+            git branch: '${branch}', url: "${readConfig.gitUrl}"
+           echo "checkout is successful"
       }
     }
     stage('build'){
@@ -63,6 +67,7 @@ pipeline {
         sh (script: "sh build.sh", returnStdout: true)
         sh "ls"
         sh "rm -rf ./node_modules"
+        // Using GCP as the standard deploy strategy.
          deployToStorageBucket {
 
            }
