@@ -31,6 +31,7 @@ def call(Closure body) {
 
         					 gcloud config list;
         					 ls
+        					 gsutil cp app.yaml ./dist/design1
                              cd ./dist/design1
                              ls
                              gcloud app deploy --project=angular-317016
