@@ -7,7 +7,7 @@ import com.cloudbees.groovy.cps.NonCPS
 */
 
 
-def call(Closure body) {
+def call(body) {
     def config = [:]
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
@@ -45,7 +45,7 @@ pipeline {
             script {
                 git url: "https://github.com/dinesh-adlus/config-management"
                echo "checkout is successfull"
-               echo "current path is ${config}"
+               echo "current path is ${config.path}"
                def readConfig = readJSON file: "${WORKSPACE}/${config.path}"
                def testVal = readConfig.branch
                echo "confirmed value is ${testVal}"
