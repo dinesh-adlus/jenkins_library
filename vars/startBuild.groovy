@@ -23,7 +23,8 @@ pipeline {
   	 environment {
           GOOGLE_PROJECT_ID = 'angular-317016';
   		  GOOGLE_SERVICE_ACCOUNT_KEY = credentials('Angular');
-  		  PATTERN = '${WORKSPACE/index.html}'
+  		  PATTERN = '${WORKSPACE/index.html}';
+  		  env = env
      }
 
   /**
@@ -49,16 +50,16 @@ pipeline {
 
                //default: master
                git url: "https://github.com/dinesh-adlus/config-management"
-               echo "checkout is successfull"
+               echo "checkout is successful"
                echo "Reading the configuration from configuration file."
-               def readConfig = readJSON file: "${WORKSPACE}/${config.path}"
+               env.readConfig = readJSON file: "${WORKSPACE}/${config.path}"
                def branch = readConfig.branch
               }
           }
     }
     stage('checkout') {
       steps {
-            git branch: '${branch}', url: "${readConfig.gitUrl}"
+            git branch: '${env.readConfig}', url: "${env.readConfig.gitUrl}"
            echo "checkout is successful"
       }
     }
