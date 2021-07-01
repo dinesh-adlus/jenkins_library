@@ -60,7 +60,8 @@ pipeline {
     }
     stage('checkout') {
       steps {
-            git branch: '${common.readConfig}', url: "${common.readConfig.gitUrl}"
+            echo "common config is ${common.readConfig.branch}"
+            git branch: '${common.readConfig.branch}', url: "${common.readConfig.gitUrl}"
            echo "checkout is successful"
       }
     }
