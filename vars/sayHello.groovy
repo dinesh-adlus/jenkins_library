@@ -44,8 +44,8 @@ pipeline {
                 git url: "https://github.com/dinesh-adlus/config-management"
                echo "checkout is successfull"
                echo "current path is ${config.path}"
-               def readConfig = readJSON file: "${WORKSPACE}/${config.path}"
-               def testVal = readConfig.branch
+               readConfig = readJSON file: "${WORKSPACE}/${config.path}"
+               testVal = readConfig.branch
                echo "confirmed value is ${testVal}"
           }
     }
