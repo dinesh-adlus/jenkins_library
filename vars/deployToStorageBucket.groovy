@@ -33,7 +33,7 @@ def call(Closure body) {
         					 ls
                              cd ./dist/design1
                              ls
-                             gcloud app deploy
+                             gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
 
         				"""
