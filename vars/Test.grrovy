@@ -1,27 +1,10 @@
-// def call(String name = 'human') {
-//   echo "Hello, ${name}."
-
-//      node {
-//         stage('build'){
-
-//         script {
-//           bat 'npm --version'
-//         }
-//       }
-//     }
-// }
-    //   stage("Install") {
-    //         bat "npm install"
-    // bat "sh build.sh"
-    //     }
-   
-    //    File file = new File("build.sh")
-    //        println file.exists()
-     
-      //  try{
-      //        def data = readFile(file: 'build.sh');
-      //       println(data)
-      //  }
-      //  catch(Exception ex){
-      //       println('The file is not found');
-      //  }
+ gcloud config list;
+        					 ls
+        					 gsutil cp -r dist/design1 gs://my-qa1/Angular1/
+        					 gsutil cp app.yaml gs://my-qa1/Angular1/
+                             mkdir angular-gcp-aptu
+                             gsutil rsync -r gs://my-qa1/Angular1 ./angular-gcp-aptu
+                             cd angular-gcp-aptu
+                             ls
+                             gcloud app deploy --project=angular-317016
+                             echo "Deployed to GCP Successfully"

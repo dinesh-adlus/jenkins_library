@@ -31,13 +31,9 @@ def call(Closure body) {
 
         					 gcloud config list;
         					 ls
-        					 gsutil cp -r dist/design1 gs://my-qa1/Angular1/
-        					 gsutil cp app.yaml gs://my-qa1/Angular1/
-                             mkdir angular-gcp-aptu
-                             gsutil rsync -r gs://my-qa1/Angular1 ./angular-gcp-aptu
-                             cd angular-gcp-aptu
+                             cd ./dist/design1
                              ls
-                             gcloud app deploy --project=angular-317016
+                             gcloud app deploy
                              echo "Deployed to GCP Successfully"
 
         				"""
