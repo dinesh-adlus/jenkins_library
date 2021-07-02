@@ -35,7 +35,6 @@ def call(Closure body) {
         					 gsutil cp package.json ./dist/design1
                              cd ./dist/design1
                              ls
-                             npm run start
                              gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
 
