@@ -36,7 +36,7 @@ def call(Closure body) {
                              cd ./dist/design1
                              npm i --force
                              ls
-                              npm run design1/server/main.js
+                              npm run server/main.js
                              ls
                              gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
