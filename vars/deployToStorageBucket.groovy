@@ -34,7 +34,7 @@ def call(Closure body) {
         					 gsutil cp app.yaml ./dist/design1
         					 gsutil cp package.json ./dist/design1
                              cd ./dist/design1
-                             npm i
+                             npm i --force
                              ls
                               npm run design1/server/main.js
                              ls
