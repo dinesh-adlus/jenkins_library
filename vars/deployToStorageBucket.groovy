@@ -33,10 +33,10 @@ def call(Closure body) {
         					 ls
         					 gsutil cp app.yaml ./dist/design1
         					 gsutil cp package.json ./dist/design1
-                             cd ./dist/design1/server
-
+                             cd ${WORKSPACE}
+                             npm run ${WORKSPACE}/dist/design1/server/main.js
                              ls
-
+                             gcloud app deploy --project=angular-317016
                              echo "Deployed to GCP Successfully"
 
         				"""
