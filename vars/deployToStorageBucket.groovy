@@ -10,12 +10,11 @@ def call(Closure body) {
     body.delegate = config
     body()
 
-    def test(){
-      echo"entered one"
-    }
            try{
             stage('DeploytoStorageBucket'){
-
+    def test(){
+      echo"entered one"
+      }
 
         				//Deploy to GCP
         				sh """
