@@ -16,9 +16,6 @@ def call(body) {
     body.delegate = config
     body()
     def common = [:]
-    def mainlist (){
-        echo "entered into function"
-      }
 
 pipeline {
 
@@ -58,13 +55,6 @@ pipeline {
                echo "Reading the configuration from configuration file."
                common.readConfig = readJSON file: "${WORKSPACE}/${config.path}"
                def branch = common.readConfig.branch
-               mainlist()
-
-               sh """
-                  echo "${common.readConfig}"
-                  echo "one success"
-                   ${mainlist}
-                  """
               }
           }
     }
@@ -74,6 +64,9 @@ pipeline {
             git url: "${common.readConfig.gitUrl}",
                 branch: "${common.readConfig.branch}"
            echo "checkout is successful"
+                    deployToStorageBucket {
+
+                      }
       }
     }
     stage('build'){
