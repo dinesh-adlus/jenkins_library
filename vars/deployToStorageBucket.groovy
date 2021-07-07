@@ -12,9 +12,6 @@ def call(Closure body) {
 
            try{
             stage('DeploytoStorageBucket'){
-    def test(){
-      echo"entered one"
-      }
 
         				//Deploy to GCP
         				sh """
@@ -56,3 +53,7 @@ def call(Closure body) {
 
 
  }
+     def test(){
+       echo"entered one"
+       }
+
