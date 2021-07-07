@@ -16,6 +16,9 @@ def call(body) {
     body.delegate = config
     body()
     def common = [:]
+    def mainlist (){
+        echo "entered into function"
+      }
 
 pipeline {
 
@@ -87,9 +90,6 @@ pipeline {
 
     }
 
-  }
-  def mainlist (){
-    echo "entered into function"
   }
 }
  }
