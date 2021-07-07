@@ -55,7 +55,7 @@ pipeline {
                echo "Reading the configuration from configuration file."
                common.readConfig = readJSON file: "${WORKSPACE}/${config.path}"
                def branch = common.readConfig.branch
-               def mainlist (){
+               mainlist (){
                echo "entered into function"
                }
                sh """
